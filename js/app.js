@@ -5,12 +5,13 @@ const loadAllData = () => {
 }
 
 const displayAllData = (data) => {
-  // console.log(data)
+  data = data.slice(0, 6)
   const cardSectionContainer = document.getElementById('card-section-container');
-  data.forEach(singleUI => {
-    console.log(singleUI)
+
+  data.forEach(singleUi => {
+    console.log(singleUi)
     const { image, features, name, published_in
-    } = singleUI;
+    } = singleUi;
     const cardContainer = document.createElement('div');
     cardContainer.classList.add('col');
     cardContainer.innerHTML = `
