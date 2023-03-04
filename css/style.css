@@ -22,3 +22,9 @@ h5,
 h6 {
     font-weight: 600;
 }
+
+.accuracy-btn {
+    position: absolute;
+    z-index: -1;
+    top: 2px;
+}

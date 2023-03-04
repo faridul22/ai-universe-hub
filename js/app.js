@@ -103,12 +103,6 @@ const displaySingleCardDetails = (data) => {
 
 
 
-  const accuracyBtn = document.getElementById('accuracy-btn');
-  if (accuracy.score === null) {
-    accuracyBtn.classList.add('d-none')
-  }
-
-
 
   const modalBody = document.createElement('div');
   modalBody.classList.add('row');
@@ -117,13 +111,13 @@ const displaySingleCardDetails = (data) => {
       <h6>${description ? description : 'No data found'}</h6>
       <div class="row">
           <div class="col-md-4">
-              <p class="bg-light rounded-2 p-2 text-primary">${pricing?.[0].price ? pricing[0].price : 'Free of cost'} <br>${pricing?.[0].plan ? pricing[0].plan : 'No data found'}</p>
+              <p class="bg-light rounded-2 p-2 text-primary">${pricing?.[0].price ? pricing[0].price : 'Free of cost'} <br>${pricing?.[0].plan ? pricing[0].plan : ''}</p>
           </div>
           <div class="col-md-4">
-              <p class="bg-light rounded-2 p-2 text-warning">${pricing?.[1].price ? pricing[1].price : 'Free of cost'} ${pricing?.[1].plan ? pricing[1].plan : 'No data found'}<br> </p>
+              <p class="bg-light rounded-2 p-2 text-warning">${pricing?.[1].price ? pricing[1].price : 'Free of cost'} ${pricing?.[1].plan ? pricing[1].plan : ''}<br> </p>
           </div>
           <div class="col-md-4">
-              <p class="bg-light rounded-2 p-2 text-info">${pricing?.[2].price ? pricing[2].price : 'Free of cost'} ${pricing?.[2].plan ? pricing[2].plan : 'No data found'}</p>
+              <p class="bg-light rounded-2 p-2 text-info">${pricing?.[2].price ? pricing[2].price : 'Free of cost'} ${pricing?.[2].plan ? pricing[2].plan : ''}</p>
           </div>
       </div>
       <div class="row">
@@ -144,13 +138,14 @@ const displaySingleCardDetails = (data) => {
                </ul>
             </div>
         </div>
-
   </div>
   <div class="col-sm-12 col-md-6 card mx-auto p-3">
-      <img class="img-fluid rounded-2" style="height:400px" src=${image_link?.[0] ? image_link[0] : 'No data found'} alt="">
+      <img class="img-fluid rounded-2 " style="height:400px" src=${image_link?.[0] ? image_link[0] : 'No data found'} alt="">
       <h5 class="text-center mt-2">${input_output_examples?.[0].input ? input_output_examples?.[0].input : 'Can you give any example?'}</h5>
       <small class="text-muted text-center">${input_output_examples?.[0].output ? input_output_examples?.[0].output : 'No! Not Yet! Take a break!!!'}</small>
-      <button id="accuracy-btn" class="w-50 border-0 bg-danger text-light rounded-4">${accuracy?.score ? accuracy?.score : ''} accuracy</button>
+
+      <button id="accuracy-btn" class="w-50 border-0 bg-danger text-light rounded-4">${accuracy?.score ? accuracy?.score + ' accuracy' : ''}</button>
+      
   </div>
   `;
   modalContainer.appendChild(modalBody)
