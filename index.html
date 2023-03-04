@@ -18,7 +18,7 @@
     <header>
         <div class="text-center my-5">
             <h1 class="my-3 fw-semibold">AI Universe Hub</h1>
-            <button class="primary-btn">Sort By Date</button>
+            <button id="sorting-btn" class="primary-btn">Sort By Date</button>
         </div>
     </header>
     <!-- header end -->
@@ -40,6 +40,24 @@
             <div class="d-flex justify-content-center text-danger">
                 <div class="spinner-border" role="status">
                     <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- modal section -->
+        <section>
+            <!-- Modal -->
+            <div class="modal fade" id="cardDetailsModal" tabindex="-1" aria-labelledby="cardDetailsModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div id="modal-body" class="modal-body">
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
