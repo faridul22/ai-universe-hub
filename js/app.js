@@ -19,6 +19,7 @@ const displayAllData = (data, dataLimit, sort) => {
     seeMore.classList.add('d-none')
   }
 
+
   if (sort) {
     data.sort((a, b) => new Date(a.published_in).getTime() - new Date(b.published_in).getTime())
   }
@@ -96,7 +97,7 @@ const loadSingleCardDetails = async (id) => {
 
 const displaySingleCardDetails = (data) => {
   console.log(data)
-  const { description, pricing, image_link, features, integrations } = data
+  const { description, pricing, image_link, features, integrations, input_output_examples } = data
   const modalContainer = document.getElementById('modal-body');
   modalContainer.textContent = '';
 
@@ -106,17 +107,17 @@ const displaySingleCardDetails = (data) => {
   modalBody.classList.add('row');
   modalBody.classList.add('justify-content-center');
   modalBody.innerHTML = `
-  <div class="col-sm-12 col-md-6 card p-2 mx-auto bg-danger-subtle">
+  <div class="col-sm-12 col-md-6 card p-5 mx-auto bg-danger-subtle ">
       <h6>${description ? description : 'No data found'}</h6>
       <div class="row">
           <div class="col-md-4">
-              <p>${pricing?.[0].price ? pricing[0].price : 'No data found'} <br>${pricing?.[0].plan ? pricing[0].plan : 'No data found'}</p>
+              <p class="bg-light rounded-2 p-2 text-primary">${pricing?.[0].price ? pricing[0].price : 'No data found'} <br>${pricing?.[0].plan ? pricing[0].plan : 'No data found'}</p>
           </div>
           <div class="col-md-4">
-              <p class=w-50px>${pricing?.[1].price ? pricing[1].price : 'No data found'} ${pricing?.[1].plan ? pricing[1].plan : 'No data found'}<br> </p>
+              <p class="bg-light rounded-2 p-2 text-warning">${pricing?.[1].price ? pricing[1].price : 'No data found'} ${pricing?.[1].plan ? pricing[1].plan : 'No data found'}<br> </p>
           </div>
           <div class="col-md-4">
-              <p>${pricing?.[2].price ? pricing[2].price : 'No data found'} ${pricing?.[2].plan ? pricing[2].plan : 'No data found'}</p>
+              <p class="bg-light rounded-2 p-2 text-info">${pricing?.[2].price ? pricing[2].price : 'No data found'} ${pricing?.[2].plan ? pricing[2].plan : 'No data found'}</p>
           </div>
       </div>
       <div class="row">
@@ -131,18 +132,19 @@ const displaySingleCardDetails = (data) => {
             <div class="col-md-6"> 
                <h5>Integrations</h5>
                <ul>
-                <li>${integrations?.[0]}</li>
-                <li></li>
-                <li></li>
+               <li>${integrations?.[0]}</li>
+                <li>${integrations?.[0] ? integrations?.[0] : ''}</li>
+                <li>${integrations?.[1] ? integrations?.[1] : ''}</li>
+                <li>${integrations?.[2] ? integrations?.[2] : ''}</li>
                </ul>
             </div>
         </div>
 
   </div>
-  <div class="col-sm-12 col-md-6 card mx-auto px-0">
-      <img class="img-fluid rounded-2" src=${image_link?.[0] ? image_link[0] : 'No data found'} alt="">
-      <h5></h5>
-      <small></small>
+  <div class="col-sm-12 col-md-6 card mx-auto p-3">
+      <img class="img-fluid rounded-2" style="height:400px" src=${image_link?.[0] ? image_link[0] : 'No data found'} alt="">
+      <h5 class="text-center mt-2">${input_output_examples?.[0].input ? input_output_examples?.[0].input : 'Can you give any example?'}</h5>
+      <small class="text-muted text-center">${input_output_examples?.[0].output ? input_output_examples?.[0].output : 'No! Not Yet! Take a break!!!'}</small>
       <p></p>
   </div>
   `;
