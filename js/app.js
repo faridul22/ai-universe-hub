@@ -2,6 +2,7 @@ const loadAllData = (dataLimit) => {
   fetch(` https://openapi.programming-hero.com/api/ai/tools`)
     .then(response => response.json())
     .then(data => displayAllData(data.data.tools, dataLimit))
+  toggleSpinner(true);
 }
 
 const displayAllData = (data, dataLimit) => {
@@ -46,11 +47,23 @@ const displayAllData = (data, dataLimit) => {
         `;
     cardSectionContainer.appendChild(cardContainer)
   })
-
+  toggleSpinner(false)
 }
 
+// see more event handler
 document.getElementById('see-more-btn').addEventListener('click', function () {
   loadAllData()
 })
+
+// Toggle spinner
+const spinner = document.getElementById('spinner');
+const toggleSpinner = (isLoading) => {
+  if (isLoading) {
+    spinner.classList.remove('d-none')
+  }
+  else {
+    spinner.classList.add('d-none')
+  }
+}
 
 loadAllData(6)
