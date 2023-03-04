@@ -1,13 +1,20 @@
-const loadAllData = () => {
+const loadAllData = (dataLimit) => {
   fetch(` https://openapi.programming-hero.com/api/ai/tools`)
     .then(response => response.json())
-    .then(data => displayAllData(data.data.tools))
+    .then(data => displayAllData(data.data.tools, dataLimit))
 }
 
-const displayAllData = (data) => {
-  data = data.slice(0, 6)
-  const cardSectionContainer = document.getElementById('card-section-container');
+const displayAllData = (data, dataLimit) => {
+  if (dataLimit && data.length > 6) {
+    data = data.slice(0, 6)
+  }
+  else {
+    const seeMore = document.getElementById('see-more-btn');
+    seeMore.classList.add('d-none')
+  }
 
+  const cardSectionContainer = document.getElementById('card-section-container');
+  cardSectionContainer.textContent = '';
   data.forEach(singleUi => {
     console.log(singleUi)
     const { image, features, name, published_in
@@ -22,7 +29,7 @@ const displayAllData = (data) => {
             <ol class="text-muted">
                 <li>${features[0]}</li>
                 <li>${features[1]}</li>
-                <li>${features[2]}</li>
+                <li>${features[2] ? features[2] : 'No data available'}</li>
              </ol>
           </div>
           <hr class="m-0">
@@ -41,3 +48,9 @@ const displayAllData = (data) => {
   })
 
 }
+
+document.getElementById('see-more-btn').addEventListener('click', function () {
+  loadAllData()
+})
+
+loadAllData(6)
