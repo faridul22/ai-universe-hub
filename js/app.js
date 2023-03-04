@@ -135,11 +135,13 @@ const displaySingleCardDetails = (data) => {
                 <li>${integrations?.[0] ? integrations?.[0] : 'No data found'}</li>
                 <li>${integrations?.[1] ? integrations?.[1] : 'No data found'}</li>
                 <li>${integrations?.[2] ? integrations?.[2] : 'No data found'}</li>
+                <li>${integrations?.[3] ? integrations?.[3] : 'No data found'}</li>
+                <li>${integrations?.[4] ? integrations?.[4] : 'No data found'}</li>
                </ul>
             </div>
         </div>
   </div>
-  <div class="col-sm-12 col-md-6 card mx-auto p-3">
+  <div id="modal-container" class="col-sm-12 col-md-6 card mx-auto p-3">
       <img class="img-fluid rounded-2 " style="height:400px" src=${image_link?.[0] ? image_link[0] : 'No data found'} alt="">
       <h5 class="text-center mt-2">${input_output_examples?.[0].input ? input_output_examples?.[0].input : 'Can you give any example?'}</h5>
       <small class="text-muted text-center">${input_output_examples?.[0].output ? input_output_examples?.[0].output : 'No! Not Yet! Take a break!!!'}</small>
